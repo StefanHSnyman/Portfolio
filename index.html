@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stefan Snyman — IT Student &amp; Aspiring Network Engineer</title>
+  <meta name="description" content="Portfolio of Stefan Hermann Snyman — BSc Information Technology student at North-West University focused on networking, infrastructure and network security. Retro arcade edition." />
+  <meta name="author" content="Stefan Hermann Snyman" />
+  <meta name="theme-color" content="#06040c" />
+  <link rel="canonical" href="https://stefanhsnyman.github.io/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Stefan Snyman — Player 1: Network Engineer in Training" />
+  <meta property="og:description" content="Networking, infrastructure and network security. Insert coin to view CV." />
+  <meta property="og:url" content="https://stefanhsnyman.github.io/" />
+  <meta property="og:image" content="assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Stefan Hermann Snyman",
+    "jobTitle": "Information Technology Student",
+    "description": "BSc IT student at North-West University focused on networking, infrastructure and network security.",
+    "url": "https://stefanhsnyman.github.io/",
+    "sameAs": ["https://github.com/StefanHSnyman"],
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "North-West University", "address": "Vanderbijlpark, South Africa" }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">SKIP TO CONTENT</a>
+
+  <!-- ambient layers -->
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <div class="crt-vignette" aria-hidden="true"></div>
+  <div class="crt-scanlines" aria-hidden="true"></div>
+
+  <!-- ============ HUD / NAV ============ -->
+  <header class="hud" id="top">
+    <div class="hud-inner">
+      <a class="hud-brand" href="#top">
+        <span class="fuji" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>STEFAN.SNYMAN</span>
+      </a>
+      <p class="hud-score mono" aria-live="off">
+        <span class="hud-lbl">SCORE</span> <span id="score">000000</span>
+        <span class="hud-sep" aria-hidden="true">·</span>
+        <span class="hud-lbl">LVL</span> <span id="level">01</span>
+      </p>
+      <button class="hud-sfx" id="sfx-toggle" aria-pressed="false" title="Toggle sound effects">SFX:OFF</button>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+      <nav aria-label="Primary">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#about">ABOUT</a></li>
+          <li><a href="#skills">POWER-UPS</a></li>
+          <li><a href="#projects">GAMES</a></li>
+          <li><a href="#education">STATS</a></li>
+          <li><a href="#experience">QUESTS</a></li>
+          <li><a href="#contact">2P START</a></li>
+          <li class="nav-cv"><a class="btn btn-coin" href="assets/cv/Stefan_Snyman_CV.pdf" download>◉ CV.PDF</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="rainbow-rule" aria-hidden="true"></div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO / ATTRACT MODE ============ -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="boot mono" id="bootline" aria-hidden="true">BOOT&gt; LOADING PLAYER PROFILE…</p>
+          <p class="hero-player">PLAYER 1</p>
+          <h1 id="hero-heading" class="glitchable" data-text="STEFAN SNYMAN">STEFAN<br />SNYMAN</h1>
+          <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
+          <p class="hero-role">IT STUDENT // ASPIRING <span class="hl">NETWORK &amp; INFRASTRUCTURE ENGINEER</span></p>
+          <p class="hero-intro">
+            I study Information Technology at North-West University and spend my free
+            lives building the networks I want to run one day — a segmented multi-VLAN
+            homelab, enterprise simulations in Packet Tracer, and the monitoring to
+            keep every packet honest.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-start blink-soft" href="#projects">▶ PRESS START</a>
+            <a class="btn btn-coin" href="assets/cv/Stefan_Snyman_CV.pdf" download>◉ INSERT COIN — CV.PDF</a>
+          </div>
+          <ul class="hero-links" aria-label="Profiles">
+            <li><a href="https://github.com/StefanHSnyman" target="_blank" rel="noopener">[ GITHUB ]</a></li>
+            <li><a href="#" class="ph" title="Add your LinkedIn profile URL">[ LINKEDIN: PENDING ]</a></li>
+          </ul>
+        </div>
+
+        <!-- Signature: playable PACKET PONG cabinet -->
+        <div class="cabinet">
+          <div class="cabinet-marquee mono" aria-hidden="true">★ PACKET&nbsp;PONG ★</div>
+          <div class="cabinet-screen">
+            <canvas id="pong" width="560" height="380" tabindex="0"
+              aria-label="Packet Pong mini-game. Press Enter or click to play. Use arrow keys or W and S to move the LAN paddle and keep the packets flowing."></canvas>
+          </div>
+          <p class="cabinet-caption mono">LAN vs WAN · CLICK OR ⏎ TO PLAY · ▲▼ / W S / MOUSE TO MOVE</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about" aria-labelledby="about-h">
+      <header class="section-head">
+        <p class="eyebrow mono">LEVEL 01 / 08</p>
+        <h2 id="about-h">ABOUT<span class="cursor" aria-hidden="true">_</span></h2>
+        <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
+      </header>
+      <div class="about-grid">
+        <div class="about-body">
+          <p>
+            I'm an Information Technology student at <strong>North-West University</strong>
+            (Vanderbijlpark campus) with a clear direction: <strong>networking,
+            infrastructure and network security</strong>. Where most players meet networking
+            in a textbook, I met it in a rack — my homelab runs segmented VLANs behind
+            pfSense, virtualised services on Proxmox, and PRTG watching all of it.
+          </p>
+          <p>
+            My approach to problems is an engineer's speedrun route: design the topology
+            first, segment the failure domains, then build — and monitor everything,
+            because a network you can't observe is a network you can't trust. The same
+            thinking carries into my software work in C#, Python and SQL, where I've
+            shipped full database-backed applications.
+          </p>
+          <p>
+            A week shadowing a Core Network Engineer at <strong>Reunert Connect</strong>
+            confirmed the route. Next checkpoints: graduate in 2027, then the
+            <strong>MTCNA</strong> certification — and a junior role in network engineering
+            or infrastructure where the stakes are real.
+          </p>
+        </div>
+        <dl class="stat-card mono" aria-label="Quick facts">
+          <div><dt>BASE</dt><dd>SOUTH AFRICA</dd></div>
+          <div><dt>CLASS</dt><dd>BSc INFORMATION TECHNOLOGY</dd></div>
+          <div><dt>GUILD</dt><dd>NWU VANDERBIJLPARK</dd></div>
+          <div><dt>ETA</dt><dd>GRADUATING MAY 2027</dd></div>
+          <div><dt>SPEC</dt><dd>NETWORKS · INFRA · SECURITY</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section" id="skills" aria-labelledby="skills-h">
+      <header class="section-head">
+        <p class="eyebrow mono">LEVEL 02 / 08</p>
+        <h2 id="skills-h">POWER-UP INVENTORY<span class="cursor" aria-hidden="true">_</span></h2>
+        <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
+        <p class="section-sub">Tap a power-up to collect it (+10 pts). No fake percentage bars — a skill is either equipped or it isn't.</p>
+      </header>
+      <div class="sensor-grid" id="skills-grid">
+        <noscript>
+          <p>Networking &amp; Infrastructure: Network Design, VLANs, Routing &amp; Switching, Subnetting, OSPF, BGP, RSTP, DHCP, DNS, Wireless Networking. Tools &amp; Monitoring: Cisco Packet Tracer, MikroTik/Winbox, pfSense, PRTG, Kentik, Splynx. Virtualization &amp; Systems: Proxmox VE, VirtualBox, VMware, Linux, Docker. Programming &amp; Web: C#, C++, Python, Java, SQL, JavaScript, React, Node.js/Express. Databases &amp; Tools: Oracle, SQL Server, SQLite, MongoDB, GitHub, VS Code.</p>
+        </noscript>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="section" id="projects" aria-labelledby="projects-h">
+      <header class="section-head">
+        <p class="eyebrow mono">LEVEL 03 / 08</p>
+        <h2 id="projects-h">SELECT GAME<span class="cursor" aria-hidden="true">_</span></h2>
+        <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
+        <p class="section-sub">Slot a cartridge into the console to load its full case study — the problem, my role, the build, and what the run taught me.</p>
+      </header>
+      <div class="console">
+        <div class="cart-shelf" id="cart-shelf" role="tablist" aria-label="Project cartridges"></div>
+        <div class="console-screen crt-frame">
+          <div id="cart-screen" class="cart-screen" role="tabpanel" tabindex="0" aria-live="polite">
+            <p class="cart-idle mono blink-soft">— INSERT CARTRIDGE —</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION ============ -->
+    <section class="section" id="education" aria-labelledby="education-h">
+      <header class="section-head">
+        <p class="eyebrow mono">LEVEL 04 / 08</p>
+        <h2 id="education-h">CHARACTER STATS<span class="cursor" aria-hidden="true">_</span></h2>
+        <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
+      </header>
+      <div class="edu-card pixel-panel">
+        <div class="edu-main">
+          <h3>BSc INFORMATION TECHNOLOGY</h3>
+          <p class="edu-inst">NORTH-WEST UNIVERSITY — VANDERBIJLPARK CAMPUS</p>
+          <p class="mono edu-eta"><span class="led led-up" aria-hidden="true"></span>EXPECTED GRADUATION · MAY 2027</p>
+        </div>
+        <div class="edu-course">
+          <h4 class="mono">RELEVANT COURSEWORK</h4>
+          <p class="ph" title="Replace with your actual modules">[ADD RELEVANT MODULES — E.G. NETWORKING, DATABASES, PROGRAMMING, SYSTEMS]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section" id="experience" aria-labelledby="experience-h">
+      <header class="section-head">
+        <p class="eyebrow mono">LEVEL 05 / 08</p>
+        <h2 id="experience-h">SIDE QUEST LOG<span class="cursor" aria-hidden="true">_</span></h2>
+        <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
+      </header>
+      <article class="xp-card pixel-panel">
+        <header class="xp-head">
+          <p class="mono quest-flag">✔ QUEST COMPLETE</p>
+          <h3>NETWORK ENGINEERING SHADOWING</h3>
+          <p class="mono xp-meta">REUNERT CONNECT · ONE WEEK</p>
+        </header>
+        <ul class="xp-points">
+          <li>Shadowed a Core Network Engineer to see telecommunications infrastructure and real engineering environments up close.</li>
+          <li>Gained practical operational exposure that cemented my career direction in networking and infrastructure.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- ============ CURRENTLY LEARNING ============ -->
+    <section class="section" id="learning" aria-labelledby="learning-h">
+      <header class="section-head">
+        <p class="eyebrow mono">LEVEL 06 / 08</p>
+        <h2 id="learning-h">NOW LOADING…<span class="cursor" aria-hidden="true">_</span></h2>
+        <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
+      </header>
+      <ul class="learn-list">
+        <li class="learn-item pixel-panel">
+          <div class="loader" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <div>
+            <h3>MIKROTIK CERTIFIED NETWORK ASSOCIATE (MTCNA)</h3>
+            <p>Planned certification after completing my current university studies — formalising the RouterOS skills my homelab core already runs on.</p>
+          </div>
+        </li>
+        <li class="learn-item pixel-panel">
+          <div class="loader" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <div>
+            <h3 class="ph" title="Replace with what you are learning now">[ADD A TECHNOLOGY OR CONCEPT YOU'RE STUDYING]</h3>
+            <p class="ph">[One line on why, or what you're building with it]</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============ GITHUB ============ -->
+    <section class="section" id="github" aria-labelledby="github-h">
+      <header class="section-head">
+        <p class="eyebrow mono">LEVEL 07 / 08</p>
+        <h2 id="github-h">BONUS STAGE<span class="cursor" aria-hidden="true">_</span></h2>
+        <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
+      </header>
+      <div class="gh-panel pixel-panel">
+        <div class="gh-copy">
+          <p class="mono gh-prompt">$ git clone https://github.com/StefanHSnyman</p>
+          <p>The source behind every cartridge above — network configs, C# applications and university work — lives on my GitHub. The commit history is the honest speedrun timer of this portfolio.</p>
+        </div>
+        <a class="btn btn-start" href="https://github.com/StefanHSnyman" target="_blank" rel="noopener">▶ WARP TO GITHUB</a>
+      </div>
+    </section>
+
+    <!-- ============ CV ============ -->
+    <section class="section" id="cv" aria-labelledby="cv-h">
+      <header class="section-head">
+        <p class="eyebrow mono">LEVEL 08 / 08</p>
+        <h2 id="cv-h">SAVE STATE<span class="cursor" aria-hidden="true">_</span></h2>
+        <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
+      </header>
+      <div class="cv-panel pixel-panel">
+        <p>Prefer the one-page version? The full CV holds everything on this site in a recruiter-friendly PDF — a save file for your shortlist.</p>
+        <div class="cv-actions">
+          <a class="btn btn-coin" href="assets/cv/Stefan_Snyman_CV.pdf" download>◉ DOWNLOAD CV.PDF</a>
+          <a class="btn btn-ghost" href="assets/cv/Stefan_Snyman_CV.pdf" target="_blank" rel="noopener">VIEW IN BROWSER</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section" id="contact" aria-labelledby="contact-h">
+      <header class="section-head">
+        <p class="eyebrow mono">FINAL BOSS</p>
+        <h2 id="contact-h">2-PLAYER MODE<span class="cursor" aria-hidden="true">_</span></h2>
+        <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
+        <p class="section-sub">Open to graduate programmes, internships and junior roles in networking, infrastructure and security. Press start to join.</p>
+      </header>
+      <table class="hiscore mono" aria-label="Contact details styled as a high-score table">
+        <thead>
+          <tr><th scope="col">RANK</th><th scope="col">CHANNEL</th><th scope="col">HANDLE</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1ST</td><td>EMAIL</td>
+            <td><a href="#" class="ph" title="Replace with a mailto: link to your professional email">[PROFESSIONAL EMAIL ADDRESS]</a></td>
+          </tr>
+          <tr>
+            <td>2ND</td><td>LINKEDIN</td>
+            <td><a href="#" class="ph" title="Replace with your LinkedIn URL">[LINKEDIN.COM/IN/…]</a></td>
+          </tr>
+          <tr>
+            <td>3RD</td><td>GITHUB</td>
+            <td><a href="https://github.com/StefanHSnyman" target="_blank" rel="noopener">GITHUB.COM/STEFANHSNYMAN</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="rainbow-rule" aria-hidden="true"></div>
+    <div class="footer-inner">
+      <p class="mono footer-id">GAME OVER? <span class="blink-soft">CONTINUE?</span> <span id="continue-count">9</span>…</p>
+      <ul class="footer-links" aria-label="Social links">
+        <li><a href="https://github.com/StefanHSnyman" target="_blank" rel="noopener">GITHUB</a></li>
+        <li><a href="#" class="ph" title="Add your LinkedIn URL">LINKEDIN</a></li>
+        <li><a href="#top">▲ BACK TO TOP</a></li>
+      </ul>
+      <p class="footer-copy">© <span id="year">2026</span> STEFAN HERMANN SNYMAN · IT STUDENT &amp; ASPIRING NETWORK ENGINEER · NO QUARTERS REQUIRED</p>
+    </div>
+  </footer>
+
+  <script src="js/content.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
