@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stefan Snyman — IT Student &amp; Aspiring Network Engineer</title>
-  <meta name="description" content="Portfolio of Stefan Hermann Snyman — BSc Information Technology student at North-West University focused on networking, infrastructure and network security. Retro arcade edition." />
+  <meta name="description" content="Portfolio of Stefan Hermann Snyman — BSc Information Technology student at North-West University focused on networking, infrastructure and network security. Homelab builder, Packet Tracer architect, developer." />
   <meta name="author" content="Stefan Hermann Snyman" />
-  <meta name="theme-color" content="#06040c" />
+  <meta name="theme-color" content="#0b1120" />
   <link rel="canonical" href="https://stefanhsnyman.github.io/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Stefan Snyman — Player 1: Network Engineer in Training" />
-  <meta property="og:description" content="Networking, infrastructure and network security. Insert coin to view CV." />
+  <meta property="og:title" content="Stefan Snyman — IT Student & Aspiring Network Engineer" />
+  <meta property="og:description" content="Networking, infrastructure and network security. Multi-VLAN homelab, enterprise network simulation, and software projects." />
   <meta property="og:url" content="https://stefanhsnyman.github.io/" />
   <meta property="og:image" content="assets/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -20,10 +20,11 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/style.css" />
 
+  <!-- Structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -33,183 +34,248 @@
     "description": "BSc IT student at North-West University focused on networking, infrastructure and network security.",
     "url": "https://stefanhsnyman.github.io/",
     "sameAs": ["https://github.com/StefanHSnyman"],
-    "alumniOf": { "@type": "CollegeOrUniversity", "name": "North-West University", "address": "Vanderbijlpark, South Africa" }
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "North-West University",
+      "address": "Vanderbijlpark, South Africa"
+    }
   }
   </script>
 </head>
 <body>
-  <a class="skip-link" href="#main">SKIP TO CONTENT</a>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ambient layers -->
-  <canvas id="starfield" aria-hidden="true"></canvas>
-  <div class="crt-vignette" aria-hidden="true"></div>
-  <div class="crt-scanlines" aria-hidden="true"></div>
-
-  <!-- ============ HUD / NAV ============ -->
-  <header class="hud" id="top">
-    <div class="hud-inner">
-      <a class="hud-brand" href="#top">
-        <span class="fuji" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span>STEFAN.SNYMAN</span>
+  <header class="site-header" id="top">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="#top">
+        <span class="brand-led" aria-hidden="true"></span>
+        <span class="brand-name">stefan<span class="brand-dot">.</span>snyman</span>
       </a>
-      <p class="hud-score mono" aria-live="off">
-        <span class="hud-lbl">SCORE</span> <span id="score">000000</span>
-        <span class="hud-sep" aria-hidden="true">·</span>
-        <span class="hud-lbl">LVL</span> <span id="level">01</span>
-      </p>
-      <button class="hud-sfx" id="sfx-toggle" aria-pressed="false" title="Toggle sound effects">SFX:OFF</button>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
         <span class="nav-toggle-bar" aria-hidden="true"></span>
         <span class="sr-only">Menu</span>
       </button>
-      <nav aria-label="Primary">
-        <ul class="nav-menu" id="nav-menu">
-          <li><a href="#about">ABOUT</a></li>
-          <li><a href="#projects">PROJECTS</a></li>
-          <li><a href="#education">STATS</a></li>
-          <li><a href="#experience">QUESTS</a></li>
-          <li><a href="#contact">2P START</a></li>
-          <li class="nav-cv"><a class="btn btn-coin" href="assets/cv/Stefan_Snyman_CV.pdf" download>◉ CV.PDF</a></li>
-        </ul>
-      </nav>
-    </div>
-    <div class="rainbow-rule" aria-hidden="true"></div>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="nav-cv"><a class="btn btn-sm btn-outline" href="assets/cv/Stefan_Snyman_CV.pdf" download>CV&nbsp;↓</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main id="main">
 
-    <!-- ============ HERO / ATTRACT MODE ============ -->
+    <!-- ============ HERO ============ -->
     <section class="hero" aria-labelledby="hero-heading">
       <div class="hero-inner">
         <div class="hero-copy">
-          <p class="boot mono" id="bootline" aria-hidden="true">BOOT&gt; LOADING PLAYER PROFILE…</p>
-          <p class="hero-player">PLAYER 1</p>
-          <h1 id="hero-heading" class="glitchable" data-text="STEFAN SNYMAN">STEFAN<br />SNYMAN</h1>
-          <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
-          <p class="hero-role">IT STUDENT // ASPIRING <span class="hl">NETWORK &amp; INFRASTRUCTURE ENGINEER</span></p>
+          <p class="eyebrow mono"><span class="led led-up" aria-hidden="true"></span>link up · south africa</p>
+          <h1 id="hero-heading">Stefan Snyman</h1>
+          <p class="hero-role">IT student &amp; aspiring <em>network &amp; infrastructure engineer</em></p>
           <p class="hero-intro">
-            I study Information Technology at North-West University and spend my free
-            lives building the networks I want to run one day — a segmented multi-VLAN
-            homelab, enterprise simulations in Packet Tracer, and the monitoring to
-            keep every packet honest.
+            I study Information Technology at North-West University and spend my spare time
+            building the networks I want to run one day — a segmented multi-VLAN homelab,
+            enterprise simulations in Packet Tracer, and the monitoring to keep it all honest.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-start blink-soft" href="#projects">▶ PRESS START</a>
-            <a class="btn btn-coin" href="assets/cv/Stefan_Snyman_CV.pdf" download>◉ INSERT COIN — CV.PDF</a>
+            <a class="btn btn-primary" href="#projects">Explore projects</a>
+            <a class="btn btn-outline" href="assets/cv/Stefan_Snyman_CV.pdf" download>Download CV (PDF)</a>
           </div>
           <ul class="hero-links" aria-label="Profiles">
-            <li><a href="https://github.com/StefanHSnyman" target="_blank" rel="noopener">[ GITHUB ]</a></li>
-            <li><a href="http://linkedin.com/in/stefan-snyman-b7a47a377" target="_blank" rel="noopener">[ LINKEDIN ]</a></li>
+            <li>
+              <a href="https://github.com/StefanHSnyman" target="_blank" rel="noopener">
+                <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href="#" class="ph" title="Add your LinkedIn profile URL">
+                <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M0 1.15C0 .52.53 0 1.18 0h13.64C15.47 0 16 .52 16 1.15v13.7c0 .63-.53 1.15-1.18 1.15H1.18A1.16 1.16 0 0 1 0 14.85V1.15Zm4.94 12.25V6.17H2.54v7.23h2.4ZM3.74 5.18c.84 0 1.36-.55 1.36-1.24-.02-.71-.52-1.25-1.34-1.25-.82 0-1.36.54-1.36 1.25 0 .69.52 1.24 1.32 1.24h.02Zm2.53 8.22h2.4V9.36c0-.22.02-.43.08-.59.17-.43.57-.88 1.23-.88.87 0 1.22.66 1.22 1.63v3.88h2.4V9.25c0-2.22-1.18-3.25-2.76-3.25-1.27 0-1.84.7-2.16 1.19v.02h-.02l.02-.02V6.17h-2.4c.03.68 0 7.23 0 7.23Z"/></svg>
+                LinkedIn <span class="ph-note">[link pending]</span>
+              </a>
+            </li>
           </ul>
         </div>
 
-        <!-- Signature: playable PACKET PONG cabinet -->
-        <div class="cabinet">
-          <div class="cabinet-marquee mono" aria-hidden="true">★ PACKET&nbsp;PONG ★</div>
-          <div class="cabinet-screen">
-            <canvas id="pong" width="560" height="380" tabindex="0"
-              aria-label="Packet Pong mini-game. Press Enter or click to play. Use arrow keys or W and S to move the LAN paddle and keep the packets flowing."></canvas>
-          </div>
-          <p class="cabinet-caption mono">LAN vs WAN · CLICK OR ⏎ TO PLAY · ▲▼ / W S / MOUSE TO MOVE</p>
-        </div>
+        <!-- Signature: live homelab topology -->
+        <figure class="hero-topology" aria-label="Diagram of Stefan's homelab network topology">
+          <svg id="topology" viewBox="0 0 640 430" role="img" aria-labelledby="topo-title">
+            <title id="topo-title">Homelab topology: WAN into a pfSense firewall, into a MikroTik core, distributing to Proxmox, PRTG, network storage and a wireless access point.</title>
+            <defs>
+              <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+                <feGaussianBlur stdDeviation="3.2" result="b"/>
+                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+
+            <!-- links -->
+            <g class="topo-links" fill="none">
+              <path id="l-wan"  d="M148 62 H262" />
+              <path id="l-fw"   d="M320 92 V162" />
+              <path id="l-pve"  d="M282 216 C 200 250, 150 270, 122 302" />
+              <path id="l-prtg" d="M304 226 C 285 260, 268 280, 258 306" />
+              <path id="l-nas"  d="M336 226 C 355 260, 372 280, 382 306" />
+              <path id="l-ap"   d="M358 216 C 440 250, 492 270, 520 302" />
+            </g>
+
+            <!-- packets (animated) -->
+            <g class="topo-packets" filter="url(#glow)">
+              <circle r="3.4" class="pkt"><animateMotion dur="3.2s" repeatCount="indefinite"><mpath href="#l-wan"/></animateMotion></circle>
+              <circle r="3.4" class="pkt"><animateMotion dur="2.6s" begin="0.6s" repeatCount="indefinite"><mpath href="#l-fw"/></animateMotion></circle>
+              <circle r="3" class="pkt"><animateMotion dur="3.4s" begin="0.2s" repeatCount="indefinite"><mpath href="#l-pve"/></animateMotion></circle>
+              <circle r="3" class="pkt pkt-alt"><animateMotion dur="3.8s" begin="1.4s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#l-prtg"/></animateMotion></circle>
+              <circle r="3" class="pkt"><animateMotion dur="3.6s" begin="0.9s" repeatCount="indefinite"><mpath href="#l-nas"/></animateMotion></circle>
+              <circle r="3" class="pkt pkt-alt"><animateMotion dur="3s" begin="1.8s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath href="#l-ap"/></animateMotion></circle>
+            </g>
+
+            <!-- nodes -->
+            <g class="topo-nodes">
+              <g class="node node-cloud" transform="translate(40,38)">
+                <rect width="108" height="48" rx="10"/>
+                <text x="16" y="22" class="n-name">WAN</text>
+                <text x="16" y="37" class="n-role">internet</text>
+              </g>
+              <g class="node" transform="translate(262,38)">
+                <circle class="n-led" cx="14" cy="16" r="3.4"/>
+                <rect width="116" height="54" rx="8"/>
+                <text x="26" y="22" class="n-name">pfSense</text>
+                <text x="14" y="40" class="n-role">firewall · dns</text>
+              </g>
+              <g class="node node-core" transform="translate(252,162)">
+                <circle class="n-led" cx="14" cy="16" r="3.4"/>
+                <rect width="136" height="58" rx="8"/>
+                <text x="26" y="23" class="n-name">MikroTik</text>
+                <text x="14" y="42" class="n-role">core · vlans</text>
+              </g>
+              <g class="node" transform="translate(58,302)">
+                <circle class="n-led" cx="14" cy="16" r="3.4"/>
+                <rect width="120" height="54" rx="8"/>
+                <text x="26" y="22" class="n-name">Proxmox VE</text>
+                <text x="14" y="40" class="n-role">linux vms</text>
+              </g>
+              <g class="node" transform="translate(206,306)">
+                <circle class="n-led" cx="14" cy="16" r="3.4"/>
+                <rect width="100" height="54" rx="8"/>
+                <text x="26" y="22" class="n-name">PRTG</text>
+                <text x="14" y="40" class="n-role">monitoring</text>
+              </g>
+              <g class="node" transform="translate(336,306)">
+                <circle class="n-led" cx="14" cy="16" r="3.4"/>
+                <rect width="98" height="54" rx="8"/>
+                <text x="26" y="22" class="n-name">NAS</text>
+                <text x="14" y="40" class="n-role">storage</text>
+              </g>
+              <g class="node" transform="translate(462,302)">
+                <circle class="n-led" cx="14" cy="16" r="3.4"/>
+                <rect width="118" height="54" rx="8"/>
+                <text x="26" y="22" class="n-name">Wi-Fi AP</text>
+                <text x="14" y="40" class="n-role">wireless</text>
+              </g>
+            </g>
+          </svg>
+          <figcaption class="mono topo-caption">live view · my homelab, the project that runs 24/7</figcaption>
+        </figure>
       </div>
     </section>
 
     <!-- ============ ABOUT ============ -->
     <section class="section" id="about" aria-labelledby="about-h">
-      <header class="section-head">
-        <p class="eyebrow mono">LEVEL 01 / 07</p>
-        <h2 id="about-h">ABOUT<span class="cursor" aria-hidden="true">_</span></h2>
-        <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
-      </header>
+      <div class="section-head">
+        <p class="eyebrow mono">vlan 10 · 10.0.10.0/24</p>
+        <h2 id="about-h">About</h2>
+      </div>
       <div class="about-grid">
         <div class="about-body">
           <p>
             I'm an Information Technology student at <strong>North-West University</strong>
-            (Vanderbijlpark campus) with a clear direction: <strong>networking,
-            infrastructure and network security</strong>. Where most players meet networking
-            in a textbook, I met it in a rack — my homelab runs segmented VLANs behind
-            pfSense, virtualised services on Proxmox, and PRTG watching all of it.
+            (Vanderbijlpark campus) with a clear direction: <strong>networking, infrastructure
+            and network security</strong>. Where most of my classmates met networking in a
+            textbook, I met it in a rack — my homelab runs segmented VLANs behind pfSense,
+            virtualised services on Proxmox, and PRTG watching all of it.
           </p>
           <p>
-            My approach to problems is an engineer's speedrun route: design the topology
-            first, segment the failure domains, then build — and monitor everything,
-            because a network you can't observe is a network you can't trust. The same
-            thinking carries into my software work in C#, Python and SQL, where I've
-            shipped full database-backed applications.
+            My approach to problems is an engineer's: design the topology first, segment the
+            failure domains, then build — and monitor everything, because a network you can't
+            observe is a network you can't trust. The same thinking carries into my software
+            work in C#, Python and SQL, where I've built full database-backed applications.
           </p>
           <p>
-            A week shadowing a Core Network Engineer at a <strong>telecommunications company</strong>
-            confirmed the route. Next checkpoints: graduate in 2027, then the
+            A week shadowing a Core Network Engineer at <strong>Reunert Connect</strong>
+            confirmed the direction. Next milestones: graduate in 2027, then the
             <strong>MTCNA</strong> certification — and a junior role in network engineering
-            or infrastructure where the stakes are real.
+            or infrastructure where I can keep building at production scale.
           </p>
         </div>
-        <dl class="stat-card mono" aria-label="Quick facts">
-          <div><dt>BASE</dt><dd>SOUTH AFRICA</dd></div>
-          <div><dt>CLASS</dt><dd>BSc INFORMATION TECHNOLOGY</dd></div>
-          <div><dt>GUILD</dt><dd>NWU VANDERBIJLPARK</dd></div>
-          <div><dt>ETA</dt><dd>GRADUATING MAY 2027</dd></div>
-          <div><dt>SPEC</dt><dd>NETWORKS · INFRA · SECURITY</dd></div>
+        <dl class="about-facts mono" aria-label="Quick facts">
+          <div><dt>base</dt><dd>South Africa</dd></div>
+          <div><dt>degree</dt><dd>BSc Information Technology</dd></div>
+          <div><dt>campus</dt><dd>NWU Vanderbijlpark</dd></div>
+          <div><dt>eta</dt><dd>Graduating May 2027</dd></div>
+          <div><dt>focus</dt><dd>Networks · Infra · Security</dd></div>
         </dl>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section" id="skills" aria-labelledby="skills-h">
+      <div class="section-head">
+        <p class="eyebrow mono">vlan 20 · 10.0.20.0/24</p>
+        <h2 id="skills-h">Technical skills</h2>
+        <p class="section-sub">Grouped like a monitoring dashboard: every sensor green, no fake percentages.</p>
+      </div>
+      <div class="sensor-grid" id="skills-grid">
+        <!-- rendered from js/content.js -->
+        <noscript>
+          <p>Networking &amp; Infrastructure: Network Design, VLANs, Routing &amp; Switching, Subnetting, OSPF, BGP, RSTP, DHCP, DNS, Wireless Networking. Tools &amp; Monitoring: Cisco Packet Tracer, MikroTik/Winbox, pfSense, PRTG, Kentik, Splynx. Virtualization &amp; Systems: Proxmox VE, VirtualBox, VMware, Linux, Docker. Programming &amp; Web: C#, C++, Python, Java, SQL, JavaScript, React, Node.js/Express. Databases &amp; Tools: Oracle, SQL Server, SQLite, MongoDB, GitHub, VS Code.</p>
+        </noscript>
       </div>
     </section>
 
     <!-- ============ PROJECTS ============ -->
     <section class="section" id="projects" aria-labelledby="projects-h">
-      <header class="section-head">
-        <p class="eyebrow mono">LEVEL 02 / 07</p>
-        <h2 id="projects-h">PROJECTS<span class="cursor" aria-hidden="true">_</span></h2>
-        <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
-        <p class="section-sub">Expand a project for the full case study — the problem, my role, the build, and what it taught me.</p>
-      </header>
-      <div class="project-list" id="project-list">
-        <noscript>
-          <p>Enterprise Hybrid Homelab (MikroTik, pfSense, Proxmox VE, PRTG); Enterprise Office Network Simulation (Cisco Packet Tracer); Lerato Orphanage Management System (C#, WinForms, SQL Server); Additional Academic Projects (C++, Python, Java, Oracle). Enable JavaScript to view the full case studies, or see js/content.js for the source text.</p>
-        </noscript>
+      <div class="section-head">
+        <p class="eyebrow mono">vlan 30 · 10.0.30.0/24</p>
+        <h2 id="projects-h">Featured projects</h2>
+        <p class="section-sub">Each project opens into a full case study — the problem, my role, the stack, and what came out of it.</p>
+      </div>
+      <div class="case-list" id="project-list">
+        <!-- rendered from js/content.js -->
       </div>
     </section>
 
     <!-- ============ EDUCATION ============ -->
     <section class="section" id="education" aria-labelledby="education-h">
-      <header class="section-head">
-        <p class="eyebrow mono">LEVEL 03 / 07</p>
-        <h2 id="education-h">CHARACTER STATS<span class="cursor" aria-hidden="true">_</span></h2>
-        <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
-      </header>
-      <div class="edu-card pixel-panel">
+      <div class="section-head">
+        <p class="eyebrow mono">vlan 40 · 10.0.40.0/24</p>
+        <h2 id="education-h">Education</h2>
+      </div>
+      <div class="edu-card">
         <div class="edu-main">
-          <h3>BSc INFORMATION TECHNOLOGY</h3>
-          <p class="edu-inst">NORTH-WEST UNIVERSITY — VANDERBIJLPARK CAMPUS</p>
-          <p class="mono edu-eta"><span class="led led-up" aria-hidden="true"></span>EXPECTED GRADUATION · MAY 2027</p>
+          <h3>BSc Information Technology</h3>
+          <p class="edu-inst">North-West University — Vanderbijlpark Campus</p>
+          <p class="mono edu-eta"><span class="led led-up" aria-hidden="true"></span>expected graduation · May 2027</p>
         </div>
         <div class="edu-course">
-          <h4 class="mono">RELEVANT COURSEWORK</h4>
-          <ul class="coursework-list">
-            <li>Database Systems and SQL</li>
-            <li>Computer Networks</li>
-            <li>Systems Analysis and Design</li>
-            <li>Information Systems</li>
-            <li>Operating Systems</li>
-            <li>Programming</li>
-            <li>IT Infrastructure and Networking</li>
-          </ul>
+          <h4 class="mono">relevant coursework</h4>
+          <p class="ph" title="Replace with your actual modules">[Add relevant modules — e.g. networking, databases, programming, systems]</p>
         </div>
       </div>
     </section>
 
     <!-- ============ EXPERIENCE ============ -->
     <section class="section" id="experience" aria-labelledby="experience-h">
-      <header class="section-head">
-        <p class="eyebrow mono">LEVEL 04 / 07</p>
-        <h2 id="experience-h">SIDE QUEST LOG<span class="cursor" aria-hidden="true">_</span></h2>
-        <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
-      </header>
-      <article class="xp-card pixel-panel">
+      <div class="section-head">
+        <p class="eyebrow mono">vlan 50 · 10.0.50.0/24</p>
+        <h2 id="experience-h">Experience</h2>
+      </div>
+      <article class="xp-card">
         <header class="xp-head">
-          <p class="mono quest-flag">✔ QUEST COMPLETE</p>
-          <h3>NETWORK ENGINEERING SHADOWING</h3>
-          <p class="mono xp-meta">TELECOMMUNICATIONS COMPANY · ONE WEEK</p>
+          <h3>Network Engineering Shadowing</h3>
+          <p class="mono xp-meta">Reunert Connect · one week</p>
         </header>
         <ul class="xp-points">
           <li>Shadowed a Core Network Engineer to see telecommunications infrastructure and real engineering environments up close.</li>
@@ -220,31 +286,23 @@
 
     <!-- ============ CURRENTLY LEARNING ============ -->
     <section class="section" id="learning" aria-labelledby="learning-h">
-      <header class="section-head">
-        <p class="eyebrow mono">LEVEL 05 / 07</p>
-        <h2 id="learning-h">NOW LOADING…<span class="cursor" aria-hidden="true">_</span></h2>
-        <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
-      </header>
+      <div class="section-head">
+        <p class="eyebrow mono">vlan 60 · 10.0.60.0/24</p>
+        <h2 id="learning-h">Currently learning</h2>
+      </div>
       <ul class="learn-list">
-        <li class="learn-item pixel-panel">
-          <div class="loader" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <li class="learn-item">
+          <span class="led led-sync" aria-hidden="true"></span>
           <div>
-            <h3>MIKROTIK CERTIFIED NETWORK ASSOCIATE (MTCNA)</h3>
+            <h3>MikroTik Certified Network Associate (MTCNA)</h3>
             <p>Planned certification after completing my current university studies — formalising the RouterOS skills my homelab core already runs on.</p>
           </div>
         </li>
-        <li class="learn-item pixel-panel">
-          <div class="loader" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <li class="learn-item">
+          <span class="led led-sync" aria-hidden="true"></span>
           <div>
-            <h3>NETWORK MONITORING &amp; OBSERVABILITY PLATFORMS</h3>
-            <p>Deepening my expertise in network monitoring and observability platforms such as Kentik and PRTG, building on my homelab experience to develop stronger diagnostic and proactive-monitoring practices for enterprise environments.</p>
-          </div>
-        </li>
-        <li class="learn-item pixel-panel">
-          <div class="loader" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-          <div>
-            <h3>HOMELAB MODERNISATION</h3>
-            <p>Continuously expanding my homelab with current industry-standard hardware and software to more closely mirror enterprise-grade networking and infrastructure environments.</p>
+            <h3 class="ph" title="Replace with what you are learning now">[Add a technology or concept you're studying]</h3>
+            <p class="ph">[One line on why, or what you're building with it]</p>
           </div>
         </li>
       </ul>
@@ -252,76 +310,67 @@
 
     <!-- ============ GITHUB ============ -->
     <section class="section" id="github" aria-labelledby="github-h">
-      <header class="section-head">
-        <p class="eyebrow mono">LEVEL 06 / 07</p>
-        <h2 id="github-h">BONUS STAGE<span class="cursor" aria-hidden="true">_</span></h2>
-        <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
-      </header>
-      <div class="gh-panel pixel-panel">
+      <div class="section-head">
+        <p class="eyebrow mono">vlan 70 · 10.0.70.0/24</p>
+        <h2 id="github-h">On GitHub</h2>
+      </div>
+      <div class="gh-panel">
         <div class="gh-copy">
           <p class="mono gh-prompt">$ git clone https://github.com/StefanHSnyman</p>
-          <p>The source behind every cartridge above — network configs, C# applications and university work — lives on my GitHub. The commit history is the honest speedrun timer of this portfolio.</p>
+          <p>The lab notes behind the projects above — network configs, C# applications, and university work — live on my GitHub. The commit history is the honest version of this portfolio.</p>
         </div>
-        <a class="btn btn-start" href="https://github.com/StefanHSnyman" target="_blank" rel="noopener">▶ WARP TO GITHUB</a>
+        <a class="btn btn-primary" href="https://github.com/StefanHSnyman" target="_blank" rel="noopener">Explore my repositories →</a>
       </div>
     </section>
 
     <!-- ============ CV ============ -->
     <section class="section" id="cv" aria-labelledby="cv-h">
-      <header class="section-head">
-        <p class="eyebrow mono">LEVEL 07 / 07</p>
-        <h2 id="cv-h">SAVE STATE<span class="cursor" aria-hidden="true">_</span></h2>
-        <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
-      </header>
-      <div class="cv-panel pixel-panel">
-        <p>Prefer the one-page version? The full CV holds everything on this site in a recruiter-friendly PDF — a save file for your shortlist.</p>
+      <div class="section-head">
+        <p class="eyebrow mono">vlan 80 · 10.0.80.0/24</p>
+        <h2 id="cv-h">Curriculum vitae</h2>
+      </div>
+      <div class="cv-panel">
+        <p>Prefer the one-page version? The full CV covers everything on this site in a recruiter-friendly PDF.</p>
         <div class="cv-actions">
-          <a class="btn btn-coin" href="assets/cv/Stefan_Snyman_CV.pdf" download>◉ DOWNLOAD CV.PDF</a>
-          <a class="btn btn-ghost" href="assets/cv/Stefan_Snyman_CV.pdf" target="_blank" rel="noopener">VIEW IN BROWSER</a>
+          <a class="btn btn-primary" href="assets/cv/Stefan_Snyman_CV.pdf" download>Download CV (PDF)</a>
+          <a class="btn btn-outline" href="assets/cv/Stefan_Snyman_CV.pdf" target="_blank" rel="noopener">View in browser</a>
         </div>
       </div>
     </section>
 
     <!-- ============ CONTACT ============ -->
     <section class="section" id="contact" aria-labelledby="contact-h">
-      <header class="section-head">
-        <p class="eyebrow mono">FINAL BOSS</p>
-        <h2 id="contact-h">2-PLAYER MODE<span class="cursor" aria-hidden="true">_</span></h2>
-        <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
-        <p class="section-sub">Open to graduate programmes, internships and junior roles in networking, infrastructure and security. Press start to join.</p>
-      </header>
-      <table class="hiscore mono" aria-label="Contact details styled as a high-score table">
-        <thead>
-          <tr><th scope="col">RANK</th><th scope="col">CHANNEL</th><th scope="col">HANDLE</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1ST</td><td>EMAIL</td>
-            <td><a href="mailto:stefanhermannsnyman@gmail.com">STEFANHERMANNSNYMAN@GMAIL.COM</a></td>
-          </tr>
-          <tr>
-            <td>2ND</td><td>LINKEDIN</td>
-            <td><a href="http://linkedin.com/in/stefan-snyman-b7a47a377" target="_blank" rel="noopener">LINKEDIN.COM/IN/STEFAN-SNYMAN-B7A47A377</a></td>
-          </tr>
-          <tr>
-            <td>3RD</td><td>GITHUB</td>
-            <td><a href="https://github.com/StefanHSnyman" target="_blank" rel="noopener">GITHUB.COM/STEFANHSNYMAN</a></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="section-head">
+        <p class="eyebrow mono">vlan 90 · 10.0.90.0/24</p>
+        <h2 id="contact-h">Contact</h2>
+        <p class="section-sub">Open to graduate programmes, internships and junior roles in networking, infrastructure and security.</p>
+      </div>
+      <ul class="contact-list">
+        <li>
+          <span class="mono contact-label">email</span>
+          <a href="#" class="ph" title="Replace with a mailto: link to your professional email">[professional email address]</a>
+        </li>
+        <li>
+          <span class="mono contact-label">linkedin</span>
+          <a href="#" class="ph" title="Replace with your LinkedIn URL">[linkedin.com/in/…]</a>
+        </li>
+        <li>
+          <span class="mono contact-label">github</span>
+          <a href="https://github.com/StefanHSnyman" target="_blank" rel="noopener">github.com/StefanHSnyman</a>
+        </li>
+      </ul>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="rainbow-rule" aria-hidden="true"></div>
     <div class="footer-inner">
-      <p class="mono footer-id">GAME OVER? <span class="blink-soft">CONTINUE?</span> <span id="continue-count">9</span>…</p>
+      <p class="mono footer-id"><span class="led led-up" aria-hidden="true"></span>stefan.snyman · it student &amp; aspiring network engineer</p>
       <ul class="footer-links" aria-label="Social links">
-        <li><a href="https://github.com/StefanHSnyman" target="_blank" rel="noopener">GITHUB</a></li>
-        <li><a href="http://linkedin.com/in/stefan-snyman-b7a47a377" target="_blank" rel="noopener">LINKEDIN</a></li>
-        <li><a href="#top" id="back-to-top">▲ BACK TO TOP</a></li>
+        <li><a href="https://github.com/StefanHSnyman" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="#" class="ph" title="Add your LinkedIn URL">LinkedIn</a></li>
+        <li><a href="#top">Back to top ↑</a></li>
       </ul>
-      <p class="footer-copy">© <span id="year">2026</span> STEFAN HERMANN SNYMAN · IT STUDENT &amp; ASPIRING NETWORK ENGINEER · NO QUARTERS REQUIRED</p>
+      <p class="footer-copy">© <span id="year">2026</span> Stefan Hermann Snyman. Built by hand, monitored by PRTG.</p>
     </div>
   </footer>
 
