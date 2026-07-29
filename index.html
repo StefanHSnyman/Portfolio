@@ -65,7 +65,6 @@
       <nav aria-label="Primary">
         <ul class="nav-menu" id="nav-menu">
           <li><a href="#about">ABOUT</a></li>
-          <li><a href="#skills">POWER-UPS</a></li>
           <li><a href="#projects">PROJECTS</a></li>
           <li><a href="#education">STATS</a></li>
           <li><a href="#experience">QUESTS</a></li>
@@ -119,7 +118,7 @@
     <!-- ============ ABOUT ============ -->
     <section class="section" id="about" aria-labelledby="about-h">
       <header class="section-head">
-        <p class="eyebrow mono">LEVEL 01 / 08</p>
+        <p class="eyebrow mono">LEVEL 01 / 07</p>
         <h2 id="about-h">ABOUT<span class="cursor" aria-hidden="true">_</span></h2>
         <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
       </header>
@@ -156,102 +155,25 @@
       </div>
     </section>
 
-    <!-- ============ SKILLS ============ -->
-    <section class="section" id="skills" aria-labelledby="skills-h">
-      <header class="section-head">
-        <p class="eyebrow mono">LEVEL 02 / 08</p>
-        <h2 id="skills-h">POWER-UP INVENTORY<span class="cursor" aria-hidden="true">_</span></h2>
-        <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
-        <p class="section-sub">Tap a power-up to collect it (+10 pts). No fake percentage bars — a skill is either equipped or it isn't.</p>
-      </header>
-      <div class="sensor-grid" id="skills-grid">
-        <noscript>
-          <p>Networking &amp; Infrastructure: Network Design, VLANs, Routing &amp; Switching, Subnetting, OSPF, BGP, RSTP, DHCP, DNS, Wireless Networking. Tools &amp; Monitoring: Cisco Packet Tracer, MikroTik/Winbox, pfSense, PRTG, Kentik, Splynx. Virtualization &amp; Systems: Proxmox VE, VirtualBox, VMware, Linux, Docker. Programming &amp; Web: C#, C++, Python, Java, SQL, JavaScript, React, Node.js/Express. Databases &amp; Tools: Oracle, SQL Server, SQLite, MongoDB, GitHub, VS Code.</p>
-        </noscript>
-      </div>
-    </section>
-
     <!-- ============ PROJECTS ============ -->
     <section class="section" id="projects" aria-labelledby="projects-h">
       <header class="section-head">
-        <p class="eyebrow mono">LEVEL 03 / 08</p>
+        <p class="eyebrow mono">LEVEL 02 / 07</p>
         <h2 id="projects-h">PROJECTS<span class="cursor" aria-hidden="true">_</span></h2>
         <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
         <p class="section-sub">Expand a project for the full case study — the problem, my role, the build, and what it taught me.</p>
       </header>
-      <div class="project-list">
-        <details class="project-item pixel-panel">
-          <summary>
-            <h3 class="ph" title="Replace with your project title">[PROJECT TITLE — E.G. SEGMENTED HOMELAB NETWORK]</h3>
-          </summary>
-          <div class="project-body">
-            <h4 class="mono">PROBLEM</h4>
-            <p class="ph">[What problem or goal drove this project?]</p>
-            <h4 class="mono">MY ROLE</h4>
-            <p class="ph">[Your responsibilities / what you built]</p>
-            <h4 class="mono">FEATURES</h4>
-            <p class="ph">[Key features or components]</p>
-            <h4 class="mono">CHALLENGES</h4>
-            <p class="ph">[Notable challenges and how you solved them]</p>
-            <h4 class="mono">LESSONS LEARNED</h4>
-            <p class="ph">[What the project taught you]</p>
-            <p class="project-links">
-              <a href="#" class="ph" title="Replace with your repo URL">[REPO LINK]</a>
-              <a href="#" class="ph" title="Replace with your demo URL">[DEMO LINK]</a>
-            </p>
-          </div>
-        </details>
-
-        <details class="project-item pixel-panel">
-          <summary>
-            <h3 class="ph" title="Replace with your project title">[PROJECT TITLE — E.G. DATABASE-BACKED C# APPLICATION]</h3>
-          </summary>
-          <div class="project-body">
-            <h4 class="mono">PROBLEM</h4>
-            <p class="ph">[What problem or goal drove this project?]</p>
-            <h4 class="mono">MY ROLE</h4>
-            <p class="ph">[Your responsibilities / what you built]</p>
-            <h4 class="mono">FEATURES</h4>
-            <p class="ph">[Key features or components]</p>
-            <h4 class="mono">CHALLENGES</h4>
-            <p class="ph">[Notable challenges and how you solved them]</p>
-            <h4 class="mono">LESSONS LEARNED</h4>
-            <p class="ph">[What the project taught you]</p>
-            <p class="project-links">
-              <a href="#" class="ph" title="Replace with your repo URL">[REPO LINK]</a>
-              <a href="#" class="ph" title="Replace with your demo URL">[DEMO LINK]</a>
-            </p>
-          </div>
-        </details>
-
-        <details class="project-item pixel-panel">
-          <summary>
-            <h3 class="ph" title="Replace with your project title">[PROJECT TITLE — E.G. ENTERPRISE NETWORK SIMULATION]</h3>
-          </summary>
-          <div class="project-body">
-            <h4 class="mono">PROBLEM</h4>
-            <p class="ph">[What problem or goal drove this project?]</p>
-            <h4 class="mono">MY ROLE</h4>
-            <p class="ph">[Your responsibilities / what you built]</p>
-            <h4 class="mono">FEATURES</h4>
-            <p class="ph">[Key features or components]</p>
-            <h4 class="mono">CHALLENGES</h4>
-            <p class="ph">[Notable challenges and how you solved them]</p>
-            <h4 class="mono">LESSONS LEARNED</h4>
-            <p class="ph">[What the project taught you]</p>
-            <p class="project-links">
-              <a href="#" class="ph" title="Replace with your repo URL">[REPO LINK]</a>
-              <a href="#" class="ph" title="Replace with your demo URL">[DEMO LINK]</a>
-            </p>
-          </div>
-        </details>
+      <div class="project-list" id="project-list">
+        <noscript>
+          <p>Enterprise Hybrid Homelab (MikroTik, pfSense, Proxmox VE, PRTG); Enterprise Office Network Simulation (Cisco Packet Tracer); Lerato Orphanage Management System (C#, WinForms, SQL Server); Additional Academic Projects (C++, Python, Java, Oracle). Enable JavaScript to view the full case studies, or see js/content.js for the source text.</p>
+        </noscript>
       </div>
     </section>
 
     <!-- ============ EDUCATION ============ -->
     <section class="section" id="education" aria-labelledby="education-h">
       <header class="section-head">
-        <p class="eyebrow mono">LEVEL 04 / 08</p>
+        <p class="eyebrow mono">LEVEL 03 / 07</p>
         <h2 id="education-h">CHARACTER STATS<span class="cursor" aria-hidden="true">_</span></h2>
         <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
       </header>
@@ -263,7 +185,15 @@
         </div>
         <div class="edu-course">
           <h4 class="mono">RELEVANT COURSEWORK</h4>
-          <p class="ph" title="Replace with your actual modules">[ADD RELEVANT MODULES — E.G. NETWORKING, DATABASES, PROGRAMMING, SYSTEMS]</p>
+          <ul class="coursework-list">
+            <li>Database Systems and SQL</li>
+            <li>Computer Networks</li>
+            <li>Systems Analysis and Design</li>
+            <li>Information Systems</li>
+            <li>Operating Systems</li>
+            <li>Programming</li>
+            <li>IT Infrastructure and Networking</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -271,7 +201,7 @@
     <!-- ============ EXPERIENCE ============ -->
     <section class="section" id="experience" aria-labelledby="experience-h">
       <header class="section-head">
-        <p class="eyebrow mono">LEVEL 05 / 08</p>
+        <p class="eyebrow mono">LEVEL 04 / 07</p>
         <h2 id="experience-h">SIDE QUEST LOG<span class="cursor" aria-hidden="true">_</span></h2>
         <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
       </header>
@@ -291,7 +221,7 @@
     <!-- ============ CURRENTLY LEARNING ============ -->
     <section class="section" id="learning" aria-labelledby="learning-h">
       <header class="section-head">
-        <p class="eyebrow mono">LEVEL 06 / 08</p>
+        <p class="eyebrow mono">LEVEL 05 / 07</p>
         <h2 id="learning-h">NOW LOADING…<span class="cursor" aria-hidden="true">_</span></h2>
         <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
       </header>
@@ -306,8 +236,15 @@
         <li class="learn-item pixel-panel">
           <div class="loader" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
           <div>
-            <h3 class="ph" title="Replace with what you are learning now">[ADD A TECHNOLOGY OR CONCEPT YOU'RE STUDYING]</h3>
-            <p class="ph">[One line on why, or what you're building with it]</p>
+            <h3>NETWORK MONITORING &amp; OBSERVABILITY PLATFORMS</h3>
+            <p>Deepening my expertise in network monitoring and observability platforms such as Kentik and PRTG, building on my homelab experience to develop stronger diagnostic and proactive-monitoring practices for enterprise environments.</p>
+          </div>
+        </li>
+        <li class="learn-item pixel-panel">
+          <div class="loader" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <div>
+            <h3>HOMELAB MODERNISATION</h3>
+            <p>Continuously expanding my homelab with current industry-standard hardware and software to more closely mirror enterprise-grade networking and infrastructure environments.</p>
           </div>
         </li>
       </ul>
@@ -316,7 +253,7 @@
     <!-- ============ GITHUB ============ -->
     <section class="section" id="github" aria-labelledby="github-h">
       <header class="section-head">
-        <p class="eyebrow mono">LEVEL 07 / 08</p>
+        <p class="eyebrow mono">LEVEL 06 / 07</p>
         <h2 id="github-h">BONUS STAGE<span class="cursor" aria-hidden="true">_</span></h2>
         <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
       </header>
@@ -332,7 +269,7 @@
     <!-- ============ CV ============ -->
     <section class="section" id="cv" aria-labelledby="cv-h">
       <header class="section-head">
-        <p class="eyebrow mono">LEVEL 08 / 08</p>
+        <p class="eyebrow mono">LEVEL 07 / 07</p>
         <h2 id="cv-h">SAVE STATE<span class="cursor" aria-hidden="true">_</span></h2>
         <div class="rainbow-rule rainbow-rule-short" aria-hidden="true"></div>
       </header>
@@ -360,7 +297,7 @@
         <tbody>
           <tr>
             <td>1ST</td><td>EMAIL</td>
-            <td><a href="#" class="ph" title="Replace with a mailto: link to your professional email">[PROFESSIONAL EMAIL ADDRESS]</a></td>
+            <td><a href="mailto:stefanhermannsnyman@gmail.com">STEFANHERMANNSNYMAN@GMAIL.COM</a></td>
           </tr>
           <tr>
             <td>2ND</td><td>LINKEDIN</td>
@@ -382,7 +319,7 @@
       <ul class="footer-links" aria-label="Social links">
         <li><a href="https://github.com/StefanHSnyman" target="_blank" rel="noopener">GITHUB</a></li>
         <li><a href="http://linkedin.com/in/stefan-snyman-b7a47a377" target="_blank" rel="noopener">LINKEDIN</a></li>
-        <li><a href="#top">▲ BACK TO TOP</a></li>
+        <li><a href="#top" id="back-to-top">▲ BACK TO TOP</a></li>
       </ul>
       <p class="footer-copy">© <span id="year">2026</span> STEFAN HERMANN SNYMAN · IT STUDENT &amp; ASPIRING NETWORK ENGINEER · NO QUARTERS REQUIRED</p>
     </div>

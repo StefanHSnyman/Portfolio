@@ -1,9 +1,9 @@
 /* ============================================================
    main.js — RETRO ARCADE EDITION
    Content comes from js/content.js (SITE_CONTENT).
-   Modules: sfx · starfield · hud score · boot text · skills
-   (power-ups) · cartridges+console · Packet Pong · nav ·
-   reveal · konami · misc. All motion honours
+   Modules: sfx · starfield · hud score · boot text ·
+   project case-study accordion · Packet Pong · nav ·
+   reveal · konami · back-to-top · misc. All motion honours
    prefers-reduced-motion.
    ============================================================ */
 
@@ -187,131 +187,99 @@
   }
 
   /* ============================================================
-     SKILLS — power-up inventory with collectable chips.
+     PROJECTS — case-study accordion, rendered from content.js.
      ============================================================ */
-  function renderSkills() {
-    var grid = document.getElementById("skills-grid");
-    if (!grid || !window.SITE_CONTENT) return;
-    SITE_CONTENT.skills.forEach(function (cat) {
-      var panel = document.createElement("div");
-      panel.className = "sensor reveal";
-      panel.innerHTML =
-        '<div class="sensor-head">' +
-        '<span class="sensor-title">' + esc(cat.title.toUpperCase()) + "</span>" +
-        '<span class="count">x' + cat.items.length + "</span>" +
-        "</div>" +
-        '<ul class="chipset" role="list">' +
-        cat.items.map(function (s) {
-          return '<li><button type="button" class="chip" aria-pressed="false">' + esc(s) + "</button></li>";
-        }).join("") +
-        "</ul>";
-      grid.appendChild(panel);
-    });
-
-    grid.addEventListener("click", function (e) {
-      var chip = e.target.closest(".chip");
-      if (!chip || chip.classList.contains("collected")) return;
-      chip.classList.add("collected", "pop");
-      chip.setAttribute("aria-pressed", "true");
-      hud.add(10);
-      sfx.pickup();
-      var r = chip.getBoundingClientRect();
-      floatPoints(r.left + r.width / 2 - 14, r.top - 8, "+10");
-      setTimeout(function () { chip.classList.remove("pop"); }, 300);
-    });
-  }
-
-  /* ============================================================
-     PROJECTS — cartridge shelf (tabs) + console screen (panel).
-     ============================================================ */
-  var CART_STRIPES = [
-    "linear-gradient(90deg,#ff3864,#ff6d1f,#ffd23f)",
-    "linear-gradient(90deg,#2de2e6,#3bff8f)",
-    "linear-gradient(90deg,#ffb000,#ff3864)",
-    "linear-gradient(90deg,#3bff8f,#2de2e6,#ffd23f)"
-  ];
+  var NETWORK_MAP_SVG =
+    '<figure class="network-map-figure">' +
+    '<figcaption class="mono network-map-caption">LIVE TOPOLOGY — ENTERPRISE HYBRID HOMELAB</figcaption>' +
+    '<svg viewBox="0 0 800 700" role="img" aria-labelledby="netmap-title netmap-desc" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">' +
+    '<title id="netmap-title">Homelab network topology diagram</title>' +
+    '<desc id="netmap-desc">Internet connects to a pfSense firewall and router, which connects to a MikroTik core switch. The core switch fans out to four VLANs: Management, Servers, Storage and NAS, and IoT and Guest. The Servers VLAN connects down to a Proxmox VE virtualization host running a DNS server, PRTG monitoring, and Docker Linux services.</desc>' +
+    '<defs><marker id="nm-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">' +
+    '<path d="M2 1L8 5L2 9" fill="none" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>' +
+    '<rect x="320" y="20" width="160" height="42" rx="21" fill="rgba(156,163,175,0.08)" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4 3"/>' +
+    '<text x="400" y="41" text-anchor="middle" dominant-baseline="central" fill="#d1d5db" font-size="16">INTERNET / WAN</text>' +
+    '<line x1="400" y1="62" x2="400" y2="98" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#nm-arrow)"/>' +
+    '<rect x="300" y="100" width="200" height="56" rx="6" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="1.2"/>' +
+    '<text x="400" y="122" text-anchor="middle" dominant-baseline="central" fill="#e0f2fe" font-size="17">PFSENSE</text>' +
+    '<text x="400" y="144" text-anchor="middle" dominant-baseline="central" fill="#93c5fd" font-size="14">Firewall &amp; router</text>' +
+    '<line x1="400" y1="156" x2="400" y2="193" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#nm-arrow)"/>' +
+    '<rect x="290" y="195" width="220" height="56" rx="6" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="1.2"/>' +
+    '<text x="400" y="217" text-anchor="middle" dominant-baseline="central" fill="#e0f2fe" font-size="17">MIKROTIK CORE SWITCH</text>' +
+    '<text x="400" y="239" text-anchor="middle" dominant-baseline="central" fill="#93c5fd" font-size="14">Layer 3 · VLAN trunking</text>' +
+    '<line x1="400" y1="251" x2="110" y2="318" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#nm-arrow)"/>' +
+    '<line x1="400" y1="251" x2="300" y2="318" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#nm-arrow)"/>' +
+    '<line x1="400" y1="251" x2="490" y2="318" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#nm-arrow)"/>' +
+    '<line x1="400" y1="251" x2="680" y2="318" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#nm-arrow)"/>' +
+    '<rect x="30" y="320" width="160" height="70" rx="6" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1"/>' +
+    '<text x="110" y="345" text-anchor="middle" dominant-baseline="central" fill="#fde68a" font-size="15">VLAN 10</text>' +
+    '<text x="110" y="367" text-anchor="middle" dominant-baseline="central" fill="#fde68a" font-size="13">Management</text>' +
+    '<rect x="220" y="320" width="160" height="70" rx="6" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1"/>' +
+    '<text x="300" y="345" text-anchor="middle" dominant-baseline="central" fill="#fde68a" font-size="15">VLAN 20</text>' +
+    '<text x="300" y="367" text-anchor="middle" dominant-baseline="central" fill="#fde68a" font-size="13">Servers</text>' +
+    '<rect x="410" y="320" width="160" height="70" rx="6" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1"/>' +
+    '<text x="490" y="345" text-anchor="middle" dominant-baseline="central" fill="#fde68a" font-size="15">VLAN 30</text>' +
+    '<text x="490" y="367" text-anchor="middle" dominant-baseline="central" fill="#fde68a" font-size="13">Storage / NAS</text>' +
+    '<rect x="600" y="320" width="160" height="70" rx="6" fill="rgba(251,191,36,0.08)" stroke="#fbbf24" stroke-width="1"/>' +
+    '<text x="680" y="345" text-anchor="middle" dominant-baseline="central" fill="#fde68a" font-size="15">VLAN 40</text>' +
+    '<text x="680" y="367" text-anchor="middle" dominant-baseline="central" fill="#fde68a" font-size="13">IoT / Guest</text>' +
+    '<line x1="300" y1="390" x2="300" y2="428" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#nm-arrow)"/>' +
+    '<rect x="140" y="430" width="360" height="160" rx="12" fill="rgba(192,132,252,0.05)" stroke="#c084fc" stroke-width="1" stroke-dasharray="5 4"/>' +
+    '<text x="160" y="455" fill="#e9d5ff" font-size="15">PROXMOX VE HOST</text>' +
+    '<text x="160" y="474" fill="#d8b4fe" font-size="13">Virtualized Linux services</text>' +
+    '<rect x="160" y="490" width="95" height="80" rx="6" fill="rgba(52,211,153,0.08)" stroke="#34d399" stroke-width="1"/>' +
+    '<text x="207" y="512" text-anchor="middle" dominant-baseline="central" fill="#a7f3d0" font-size="14">DNS server</text>' +
+    '<text x="207" y="535" text-anchor="middle" dominant-baseline="central" fill="#a7f3d0" font-size="12">Local name resolution</text>' +
+    '<rect x="267" y="490" width="95" height="80" rx="6" fill="rgba(52,211,153,0.08)" stroke="#34d399" stroke-width="1"/>' +
+    '<text x="314" y="512" text-anchor="middle" dominant-baseline="central" fill="#a7f3d0" font-size="14">PRTG</text>' +
+    '<text x="314" y="535" text-anchor="middle" dominant-baseline="central" fill="#a7f3d0" font-size="12">Monitoring &amp; alerting</text>' +
+    '<rect x="374" y="490" width="95" height="80" rx="6" fill="rgba(52,211,153,0.08)" stroke="#34d399" stroke-width="1"/>' +
+    '<text x="421" y="512" text-anchor="middle" dominant-baseline="central" fill="#a7f3d0" font-size="14">Linux services</text>' +
+    '<text x="421" y="535" text-anchor="middle" dominant-baseline="central" fill="#a7f3d0" font-size="12">Docker workloads</text>' +
+    '<rect x="60" y="615" width="18" height="12" fill="rgba(56,189,248,0.15)" stroke="#38bdf8" stroke-width="1"/>' +
+    '<text x="86" y="626" dominant-baseline="central" fill="#d1d5db" font-size="13">Core network infrastructure</text>' +
+    '<rect x="330" y="615" width="18" height="12" fill="rgba(251,191,36,0.15)" stroke="#fbbf24" stroke-width="1"/>' +
+    '<text x="356" y="626" dominant-baseline="central" fill="#d1d5db" font-size="13">VLAN segmentation</text>' +
+    '<rect x="520" y="615" width="18" height="12" fill="rgba(192,132,252,0.1)" stroke="#c084fc" stroke-width="1" stroke-dasharray="3 2"/>' +
+    '<text x="546" y="626" dominant-baseline="central" fill="#d1d5db" font-size="13">Virtualization host</text>' +
+    '<rect x="60" y="645" width="18" height="12" fill="rgba(52,211,153,0.15)" stroke="#34d399" stroke-width="1"/>' +
+    '<text x="86" y="656" dominant-baseline="central" fill="#d1d5db" font-size="13">Virtualized services</text>' +
+    '</svg>' +
+    '<p class="ts network-map-note">PRTG runs as one of the virtualized services above and monitors every VLAN, device, and link shown in this diagram for uptime, bandwidth, and health.</p>' +
+    '</figure>';
 
   function renderProjects() {
-    var shelf = document.getElementById("cart-shelf");
-    var screen = document.getElementById("cart-screen");
-    if (!shelf || !screen || !window.SITE_CONTENT) return;
+    var list = document.getElementById("project-list");
+    if (!list || !window.SITE_CONTENT) return;
 
     SITE_CONTENT.projects.forEach(function (p, i) {
-      var b = document.createElement("button");
-      b.type = "button";
-      b.className = "cart";
-      b.id = "cart-" + p.id;
-      b.setAttribute("role", "tab");
-      b.setAttribute("aria-selected", "false");
-      b.setAttribute("aria-controls", "cart-screen");
-      b.innerHTML =
-        '<span class="cart-id">' + esc(p.id.toUpperCase()) + "</span>" +
-        '<span class="cart-label">' +
-        '<span class="cart-stripe" style="background:' + CART_STRIPES[i % CART_STRIPES.length] + '"></span>' +
-        '<span class="cart-title">' + esc(p.title.toUpperCase()) + "</span>" +
-        '<span class="cart-stack">' + p.stack.map(esc).join(" · ") + "</span>" +
-        "</span>";
-      b.addEventListener("click", function () { selectCart(p, b); });
-      shelf.appendChild(b);
-    });
+      var d = document.createElement("details");
+      d.className = "project-item pixel-panel";
+      d.id = "project-" + p.id;
+      if (i === 0) d.setAttribute("open", "");
 
-    // keyboard: arrow between cartridges
-    shelf.addEventListener("keydown", function (e) {
-      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
-      var carts = Array.prototype.slice.call(shelf.querySelectorAll(".cart"));
-      var idx = carts.indexOf(document.activeElement);
-      if (idx === -1) return;
-      e.preventDefault();
-      var next = carts[(idx + (e.key === "ArrowRight" ? 1 : carts.length - 1)) % carts.length];
-      next.focus();
-    });
+      d.innerHTML =
+        "<summary>" +
+        "<h3>" + esc(p.title.toUpperCase()) + "</h3>" +
+        '<p class="mono project-stack">' + p.stack.map(esc).join(" · ") + "</p>" +
+        "</summary>" +
+        '<div class="project-body">' +
+        '<h4 class="mono">PROBLEM</h4><p>' + esc(p.problem) + "</p>" +
+        '<h4 class="mono">MY ROLE</h4><p>' + esc(p.role) + "</p>" +
+        '<h4 class="mono">FEATURES</h4><ul>' +
+        p.features.map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("") +
+        "</ul>" +
+        '<h4 class="mono">CHALLENGES</h4><p>' + esc(p.challenges) + "</p>" +
+        '<h4 class="mono">LESSONS LEARNED</h4><p>' + esc(p.lessons) + "</p>" +
+        (p.networkMap ? NETWORK_MAP_SVG : "") +
+        "</div>";
 
-    function selectCart(p, btn) {
-      shelf.querySelectorAll(".cart").forEach(function (c) {
-        c.setAttribute("aria-selected", "false");
+      d.addEventListener("toggle", function () {
+        if (d.open) sfx.insert();
       });
-      btn.setAttribute("aria-selected", "true");
-      screen.setAttribute("aria-labelledby", btn.id);
-      sfx.insert();
 
-      var render = function () {
-        screen.innerHTML =
-          '<h3 class="cs-title">' + esc(p.title.toUpperCase()) + "</h3>" +
-          '<p class="cs-summary">' + esc(p.summary) + "</p>" +
-          '<div class="cs-grid">' +
-          csField("THE PROBLEM", "<p>" + esc(p.problem) + "</p>") +
-          csField("MY ROLE", "<p>" + esc(p.role) + "</p>") +
-          csField("KEY FEATURES", "<ul>" + p.features.map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("") + "</ul>") +
-          csField("CHALLENGES & HIGHLIGHTS", phText(p.highlights)) +
-          csField("WHAT I LEARNED", phText(p.learned)) +
-          '<div class="cs-links">' +
-          linkBtn(p.repo, "▶ VIEW REPOSITORY", "[ADD GITHUB REPO LINK]") +
-          (p.demo !== undefined ? linkBtn(p.demo, "▶ LIVE DEMO", "[ADD DEMO LINK, OR REMOVE]") : "") +
-          "</div></div>";
-      };
-
-      if (reducedMotion) { render(); return; }
-      screen.classList.remove("loading");
-      void screen.offsetWidth;           // restart animation
-      screen.classList.add("loading");
-      setTimeout(render, 140);
-    }
-
-    function csField(label, inner) {
-      return '<div class="cs-field"><h4>' + label + "</h4>" + inner + "</div>";
-    }
-    function phText(obj) {
-      if (!obj) return "<p>—</p>";
-      return obj.ph
-        ? '<p class="ph" title="Replace in js/content.js">' + esc(obj.text) + "</p>"
-        : "<p>" + esc(obj.text) + "</p>";
-    }
-    function linkBtn(url, label, phLabel) {
-      if (url) {
-        return '<a class="btn btn-coin" href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(label) + "</a>";
-      }
-      return '<span class="chip ph" title="Add the URL in js/content.js">' + esc(phLabel) + "</span>";
-    }
+      list.appendChild(d);
+    });
   }
 
   /* ============================================================
@@ -545,7 +513,7 @@
 
   function initReveal() {
     var targets = document.querySelectorAll(
-      ".section-head, .about-grid, .pixel-panel, .learn-item, .hiscore, .cabinet, .cart, .console-screen, .reveal"
+      ".section-head, .about-grid, .pixel-panel, .learn-item, .hiscore, .cabinet, .project-item, .reveal"
     );
     targets.forEach(function (t) { t.classList.add("reveal"); });
     if (reducedMotion || !("IntersectionObserver" in window)) {
@@ -583,6 +551,18 @@
   }
 
   /* ============================================================
+     BACK TO TOP — smooth-scroll instead of an abrupt anchor jump.
+     ============================================================ */
+  function initBackToTop() {
+    var btn = document.getElementById("back-to-top");
+    if (!btn) return;
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
+    });
+  }
+
+  /* ============================================================
      MISC — footer countdown, year
      ============================================================ */
   function initMisc() {
@@ -605,13 +585,13 @@
     hud.init();
     initStarfield();
     initBoot();
-    renderSkills();
     renderProjects();
     initPong();
     initNav();
     initActiveNav();
     initReveal();
     initKonami();
+    initBackToTop();
     initMisc();
   });
 })();
