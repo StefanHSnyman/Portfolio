@@ -3,7 +3,10 @@
    Update this file; main.js renders it. No HTML edits needed.
    ============================================================ */
 
-const SITE_CONTENT = {
+/* Attach explicitly to window: a top-level `const` does NOT become a
+   window property in browsers, but main.js checks window.SITE_CONTENT,
+   so this assignment is required for rendering to work. */
+window.SITE_CONTENT = {
   projects: [
     {
       id: "eth0",
